@@ -76,27 +76,29 @@ class ilAuthProviderOpenIdConnect extends ilAuthProvider implements ilAuthProvid
                 $oidc->getRedirectURL()
             );
 
-            $oidc->setResponseTypes(
-                [
-                    'id_token'
-                ]
-            );
+#            $oidc->setResponseTypes(
+#                [
+#                    'id_token'
+#                ]
+#            );
 
 
             $oidc->addScope($this->settings->getAllScopes());
-            $oidc->addAuthParam(['response_mode' => 'form_post']);
+#            $oidc->addAuthParam(['response_mode' => 'form_post']);
             switch ($this->settings->getLoginPromptType()) {
                 case ilOpenIdConnectSettings::LOGIN_ENFORCE:
                     $oidc->addAuthParam(['prompt' => 'login']);
                     break;
             }
-            $oidc->setAllowImplicitFlow(true);
+#            $oidc->setAllowImplicitFlow(true);
 
             $oidc->authenticate();
             // user is authenticated, otherwise redirected to authorization endpoint or exception
             $this->getLogger()->dump($_REQUEST, \ilLogLevel::DEBUG);
 
-            $claims = $oidc->getVerifiedClaims(null);
+#            $claims = $oidc->getVerifiedClaims(null);
+##            $claims = \array_merge((array)$oidc->getVerifiedClaims(null), (array)$oidc->requestUserInfo());
+            $claims = $oidc->requestUserInfo();
             $this->getLogger()->dump($claims, \ilLogLevel::DEBUG);
             $status = $this->handleUpdate($status, $claims);
 
