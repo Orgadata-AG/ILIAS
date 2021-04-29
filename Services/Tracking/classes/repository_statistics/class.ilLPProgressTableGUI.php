@@ -92,10 +92,10 @@ class ilLPProgressTableGUI extends ilLPTableBaseGUI
                 "7%"
             );
             $this->addColumn($this->lng->txt("trac_mark"), "", "5%");
-            $this->addColumn($this->lng->txt("comment"), "", "10%");
-            $this->addColumn($this->lng->txt("trac_mode"), "", "20%");
-            $this->addColumn($this->lng->txt("path"), "", "20%");
-            $this->addColumn($this->lng->txt("actions"), "", "5%");
+            // $this->addColumn($this->lng->txt("comment"), "", "10%");
+            // $this->addColumn($this->lng->txt("trac_mode"), "", "20%");
+            // $this->addColumn($this->lng->txt("path"), "", "20%");
+            // $this->addColumn($this->lng->txt("actions"), "", "5%");
 
             $this->setTitle(
                 sprintf(
@@ -136,10 +136,10 @@ class ilLPProgressTableGUI extends ilLPTableBaseGUI
                     "percentage",
                     "7%"
                 );
-                $this->addColumn($this->lng->txt("trac_mark"), "", "5%");
-                $this->addColumn($this->lng->txt("comment"), "", "10%");
-                $this->addColumn($this->lng->txt("trac_mode"), "", "20%");
-                $this->addColumn($this->lng->txt("path"), "", "20%");
+                // $this->addColumn($this->lng->txt("trac_mark"), "", "5%");
+                // $this->addColumn($this->lng->txt("comment"), "", "10%");
+                // $this->addColumn($this->lng->txt("trac_mode"), "", "20%");
+                // $this->addColumn($this->lng->txt("path"), "", "20%");
             }
         }
 
