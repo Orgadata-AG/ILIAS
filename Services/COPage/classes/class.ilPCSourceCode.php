@@ -72,7 +72,7 @@ class ilPCSourceCode extends ilPCParagraph
                 $context_node->remove_child($node_del);
             }
 
-            $content = str_replace("<br />", "<br/>", utf8_decode($content));
+            $content = str_replace("<br />", "<br/>", $content);
             $content = str_replace("<br/>", "\n", $content);
             $rownums = count(explode("\n", $content));
 
@@ -94,7 +94,7 @@ class ilPCSourceCode extends ilPCParagraph
                 },
                 $plain_content
             );
-            $content = utf8_encode($this->highlightText($plain_content, $subchar, $autoindent));
+            $content = $this->highlightText($plain_content, $subchar, $autoindent);
 
             $content = str_replace("&amp;lt;", "&lt;", $content);
             $content = str_replace("&amp;gt;", "&gt;", $content);
