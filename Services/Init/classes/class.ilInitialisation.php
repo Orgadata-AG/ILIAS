@@ -948,8 +948,11 @@ class ilInitialisation
             ilSession::setClosingContext(ilSession::SESSION_CLOSE_LOGIN);
         }
 
-        $script = "login.php?target=" . $_GET["target"] . "&client_id=" . $_COOKIE["ilClientId"] .
-            "&auth_stat=" . $a_auth_stat;
+        //$script = "login.php?target=" . $_GET["target"] . "&client_id=" . $_COOKIE["ilClientId"] .
+        //    "&auth_stat=" . $a_auth_stat;
+		
+		// Direct login directly to OpenID Connect
+		$script = 'openidconnect.php';
 
         self::redirect(
             $script,

@@ -42,7 +42,8 @@ class StartUpMetaBarProvider extends AbstractStaticMetaBarProvider
 
         $login_glyph = $factory->symbol()->glyph()->login();
         $login = $this->meta_bar->topLinkItem($if('login'))
-            ->withAction("login.php?" . $target_str . "client_id=" . rawurlencode(CLIENT_ID) . "&cmd=force_login&lang=" . $this->dic->user()->getCurrentLanguage())
+            //->withAction("login.php?" . $target_str . "client_id=" . rawurlencode(CLIENT_ID) . "&cmd=force_login&lang=" . $this->dic->user()->getCurrentLanguage())
+		    ->withAction("openidconnect.php")
             ->withSymbol($login_glyph)
             ->withPosition(2)
             ->withTitle($txt('log_in'))
