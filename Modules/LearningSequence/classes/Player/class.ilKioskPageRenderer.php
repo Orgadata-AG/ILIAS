@@ -104,6 +104,14 @@ class ilKioskPageRenderer
                 $control_builder->getNextControl()
             ])
         );
+		
+		$this->tpl->setVariable(
+            "PLAYER_NAVIGATION_BOTTOM",
+            $this->ui_renderer->render([
+                $control_builder->getPreviousControl(),
+                $control_builder->getNextControl()
+            ])
+        );
 
         $controls = $control_builder->getControls();
 
@@ -123,6 +131,12 @@ class ilKioskPageRenderer
             "OBJ_NAVIGATION",
             $this->ui_renderer->render($controls)
         );
+		
+		$this->tpl->setVariable(
+            "OBJ_NAVIGATION_BOTTOM",
+            $this->ui_renderer->render($controls)
+        );
+
 
 
         $this->tpl->setVariable(
