@@ -317,7 +317,7 @@ class LSControlBuilder implements ControlBuilder
             ->withOnLoadCode(function ($id) use ($url) {
                 $interval = $this->global_settings->getPollingIntervalMilliseconds();
                 return "$('#{$id}').on('click', function(ev) {
-					var il_ls_win = window.open('$url');
+					var il_ls_win = window.open('$url','_self');
 					window._lso_current_item_lp = -1;
 					window.setInterval(lso_checkLPOfObject, $interval);
 				})";
