@@ -17,6 +17,7 @@ interface TOCBuilder
     public const LP_IN_PROGRESS = 1;
     public const LP_COMPLETED = 2;
     public const LP_FAILED = 3;
+    public const LP_RUNNING = 4;
 
     /**
      * Finish building the TOC.
