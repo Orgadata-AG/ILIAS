@@ -19,7 +19,8 @@ class ilLSTOCGUI extends ilExplorerBaseGUI
         TOCBuilder::LP_NOT_STARTED => "./templates/default/images/scorm/not_attempted.svg",
         TOCBuilder::LP_IN_PROGRESS => "./templates/default/images/scorm/incomplete.svg",
         TOCBuilder::LP_COMPLETED => "./templates/default/images/scorm/completed.svg",
-        TOCBuilder::LP_FAILED => "./templates/default/images/scorm/failed.svg"
+        TOCBuilder::LP_FAILED => "./templates/default/images/scorm/failed.svg",
+        TOCBuilder::LP_RUNNING => "./templates/default/images/scorm/running.svg"
     ];
 
     protected $id = 'ls_toc';
@@ -47,7 +48,7 @@ class ilLSTOCGUI extends ilExplorerBaseGUI
         parent::__construct("lsq_toc", null, "");
         $this->url_builder = $url_builder;
         $this->ctrl = $il_ctrl; //ilExplorerBaseGUI needs ctrl...
-        $this->setSkipRootNode(false);
+        $this->setSkipRootNode(true);
         $this->setNodeOnclickEnabled(true);
 
         //get the image paths to the node icons

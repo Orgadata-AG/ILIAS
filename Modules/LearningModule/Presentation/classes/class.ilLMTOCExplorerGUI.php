@@ -507,21 +507,40 @@ class ilLMTOCExplorerGUI extends ilLMExplorerGUI
                 $node_toc = $toc;
             } else {
                 // current workaround
-                $lp = LSTOCBuilder::LP_IN_PROGRESS;
                 $node_icon = $this->getNodeIcon($current_node);
-                if (strpos($node_icon, "complete")) {
+				
+                if (strpos($node_icon, "running")) {
+                    $lp = LSTOCBuilder::LP_RUNNING;
+                } else if (strpos($node_icon, "incomplete")) {
+                    $lp = LSTOCBuilder::LP_IN_PROGRESS;
+                } else if (strpos($node_icon, "complete")) {
                     $lp = LSTOCBuilder::LP_COMPLETED;
+                } else if (strpos($node_icon, "failed")) {
+                    $lp = LSTOCBuilder::LP_FAILED;
                 }
 
                 $node_toc = $toc->node($current_node["title"], $current_node["child"], $lp);
             }
             foreach ($this->getChildren($current_node) as $child) {
                 $this->renderLSTocNode($node_toc, $child);
+
             }
             $node_toc->end();
         } else {
             $highlight = $this->isNodeHighlighted($current_node);
-            $toc->item($current_node["title"], $current_node["child"], null, $highlight);
+            $node_icon = $this->getNodeIcon($current_node);
+						
+            if (strpos($node_icon, "running")) {
+                $lp = LSTOCBuilder::LP_RUNNING;
+            } else if (strpos($node_icon, "incomplete")) {
+                $lp = LSTOCBuilder::LP_IN_PROGRESS;
+            } else if (strpos($node_icon, "complete")) {
+                $lp = LSTOCBuilder::LP_COMPLETED;
+            } else if (strpos($node_icon, "failed")) {
+                $lp = LSTOCBuilder::LP_FAILED;
+            }
+
+            $toc->item($current_node["title"], $current_node["child"], $lp , $highlight);
         }
     }
 }
