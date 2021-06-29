@@ -110,15 +110,18 @@ class ilLSPlayer
         $control_builder = $this->control_builder;
         $view->buildControls($state, $control_builder);
 
-        //amend controls not set by the view
-        $control_builder = $this->buildDefaultControls($control_builder, $item, $item_position, $items);
-
         //content
         $obj_title = $next_item->getTitle();
         $icon = $this->ui_factory->symbol()->icon()
             ->standard($next_item->getType(), $next_item->getType(), 'medium');
 
         $content = $this->renderComponentView($state, $view);
+
+        //reload items after updateStatus during renderComponentView
+        $items = $this->ls_items->getItems();
+
+        //amend controls not set by the view
+        $control_builder = $this->buildDefaultControls($control_builder, $item, $item_position, $items);
 
         $panel = $this->ui_factory->panel()->standard(
             '', //panel_title
@@ -266,6 +269,8 @@ class ilLSPlayer
             if (!$is_last) {
                 $available = $this->getNextItem($items, $item, $direction_next)
                     ->getAvailability() === Step::AVAILABLE;
+
+
 
                 if ($available) {
                     $cmd = self::LSO_CMD_NEXT;
