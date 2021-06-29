@@ -110,6 +110,12 @@ class ilLSPlayer
 
         $content = $this->renderComponentView($state, $view);
 
+        //reload items after updateStatus during renderComponentView
+        $items = $this->ls_items->getItems();
+
+        //amend controls not set by the view
+        $control_builder = $this->buildDefaultControls($control_builder, $item, $item_position, $items);
+
         $panel = $this->ui_factory->panel()->standard(
             '', //panel_title
             $content
