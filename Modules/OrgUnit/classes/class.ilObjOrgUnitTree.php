@@ -484,13 +484,21 @@ class ilObjOrgUnitTree
             throw new ilException('there is already a temporary table for org-unit assignement: ' . self::$temporary_table_name);
         }
 
-        $q = "CREATE TEMPORARY TABLE IF NOT EXISTS " . $temporary_table_name . " AS (
+        /* $q = "CREATE TEMPORARY TABLE IF NOT EXISTS " . $temporary_table_name . " AS (
 				SELECT DISTINCT object_reference.ref_id AS ref_id, il_orgu_ua.user_id AS user_id, orgu_path_storage.path AS path
 					FROM il_orgu_ua
                     JOIN object_reference ON object_reference.ref_id = il_orgu_ua.orgu_id
 					JOIN object_data ON object_data.obj_id = object_reference.obj_id
 					JOIN orgu_path_storage ON orgu_path_storage.ref_id = object_reference.ref_id
 				WHERE object_data.type = 'orgu' AND object_reference.deleted IS NULL
+			);"; */
+
+		$q = "CREATE TEMPORARY TABLE IF NOT EXISTS " . $temporary_table_name . " AS (
+                SELECT DISTINCT object_reference.ref_id AS ref_id, il_orgu_ua.user_id AS user_id, object_data.title AS title
+                    FROM il_orgu_ua
+                    JOIN object_reference ON object_reference.ref_id = il_orgu_ua.orgu_id
+                    JOIN object_data ON object_data.obj_id = object_reference.obj_id
+                WHERE object_data.type = 'orgu' AND object_reference.deleted IS NULL
 			);";
         $this->db->manipulate($q);
 
