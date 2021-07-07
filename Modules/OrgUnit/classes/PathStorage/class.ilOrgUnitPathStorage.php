@@ -94,7 +94,7 @@ class ilOrgUnitPathStorage extends ActiveRecord
 
             $res = $ilDB->queryF(
                 "SELECT " . $ilDB->groupConcat(
-                    "path",
+                    "title",
                     $separator
                 ) . " AS orgus FROM orgu_usr_assignements WHERE user_id = %s GROUP BY user_id;",
                 array('integer'),
