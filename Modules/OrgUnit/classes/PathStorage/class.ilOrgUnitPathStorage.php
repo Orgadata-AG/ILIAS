@@ -84,7 +84,7 @@ class ilOrgUnitPathStorage extends ActiveRecord
             $ilDB = $DIC['ilDB'];
             ilObjOrgUnitTree::_getInstance()->buildTempTableWithUsrAssignements();
 
-            $res = $ilDB->queryF("SELECT " . $ilDB->groupConcat("path", $separator) . " AS orgus FROM orgu_usr_assignements WHERE user_id = %s GROUP BY user_id;", array('integer'), array($user_id));
+            $res = $ilDB->queryF("SELECT " . $ilDB->groupConcat("title", $separator) . " AS orgus FROM orgu_usr_assignements WHERE user_id = %s GROUP BY user_id;", array('integer'), array($user_id));
             $dat = $ilDB->fetchObject($res);
 
             return $dat->orgus ? $dat->orgus : '-';
