@@ -248,6 +248,7 @@ class ilLMPresentationGUI
             $DIC->globalScreen()->tool()->context()->claim()->repository();
         }
 
+		/*
         if (!$ilCtrl->isAsynch()) {
             // moved this into the if due to #0027200
             if (!$embed_mode) {
@@ -256,7 +257,7 @@ class ilLMPresentationGUI
                 }
             }
             $DIC->globalScreen()->tool()->context()->current()->addAdditionalData(ilLMGSToolProvider::SHOW_LINK_SLATES, true);
-        }
+        } */
 
         if ($embed_mode) {
             $ilCtrl->setParameter($this, "embed_mode", 1);
@@ -265,7 +266,7 @@ class ilLMPresentationGUI
                 "ref_id" => $this->lm->getRefId(),
                 "frame" => ""
             ];
-            $DIC->globalScreen()->tool()->context()->current()->addAdditionalData(\ilLMGSToolProvider::LM_QUERY_PARAMS, $params);
+            //$DIC->globalScreen()->tool()->context()->current()->addAdditionalData(\ilLMGSToolProvider::LM_QUERY_PARAMS, $params);
         }
     }
 
@@ -3124,6 +3125,21 @@ class ilLMPresentationGUI
      */
     public function getHTML($pars)
     {
+        /** @var ILIAS\DI\Container $DIC */
+        global $DIC;
+
+        if (!$this->ctrl->isAsynch()) {
+            // moved this into the if due to #0027200
+            if (!$this->embed_mode) {
+                $DIC->globalScreen()->tool()->context()->current()->addAdditionalData(ilLMGSToolProvider::SHOW_TOC_TOOL, true);
+            }
+            $DIC->globalScreen()->tool()->context()->current()->addAdditionalData(ilLMGSToolProvider::SHOW_LINK_SLATES, true);
+        }
+
+        if ($this->embed_mode) {
+            $DIC->globalScreen()->tool()->context()->current()->addAdditionalData(\ilLMGSToolProvider::LM_QUERY_PARAMS, $params);
+        }
+
         $this->addResourceFiles();
         switch ($pars["cmd"]) {
             case "layout":
