@@ -1,7 +1,7 @@
 <?php
 /* Copyright (c) 1998-2009 ILIAS open source, Extended GPL, see docs/LICENSE */
 
-use Jumbojett\OpenIDConnectClient;
+use JuliusPC\OpenIDConnectClient;
 
 /**
  * Class ilAuthProviderOpenIdConnect
@@ -97,7 +97,7 @@ class ilAuthProviderOpenIdConnect extends ilAuthProvider implements ilAuthProvid
             // user is authenticated, otherwise redirected to authorization endpoint or exception
             $this->getLogger()->dump($_REQUEST, \ilLogLevel::DEBUG);
 
-            $claims = $oidc->getVerifiedClaims(null);
+            $claims = $oidc->requestUserInfo();
             $this->getLogger()->dump($claims, \ilLogLevel::DEBUG);
             $status = $this->handleUpdate($status, $claims);
 

@@ -48,7 +48,7 @@
 		"league/flysystem": "1.1.4",
 		"james-heinrich/getid3": "^1.9",
 		"phpoffice/phpspreadsheet": "^1.18.0",
-		"jumbojett/openid-connect-php": "^0.9.2",
+		"juliuspc/openid-connect-php": "^1.1",
 		"sabre/dav": "^4.1",
 		"symfony/console" : "^4.2",
 		"slim/slim": "^3.11",
@@ -214,7 +214,7 @@
 			"last_update_by": "Michael Jansen <mjansen@databay.de>",
 			"approved-by": "Jour Fixe",
 			"approved-date": "YYYY-MM-DD"
-		},                
+		},
 		"imsglobal/lti" : {
 			"source": "https://github.com/ILIAS-eLearning/LTI-Tool-Provider-Library-PHP",
 			"used_version": "v3.0.2",
