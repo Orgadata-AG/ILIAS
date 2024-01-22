@@ -18,7 +18,7 @@
 
 declare(strict_types=1);
 
-use Jumbojett\OpenIDConnectClient;
+use JuliusPC\OpenIDConnectClient;
 
 /**
  * Class ilAuthProviderOpenIdConnect
