@@ -942,17 +942,17 @@
             "time": "2023-02-19T19:52:35+00:00"
         },
         {
-            "name": "jumbojett/openid-connect-php",
-            "version": "v0.9.10",
+            "name": "juliuspc/openid-connect-php",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jumbojett/OpenID-Connect-PHP.git",
-                "reference": "45aac47b525f0483dd4db3324bb1f1cab4666061"
+                "url": "https://github.com/JuliusPC/OpenID-Connect-PHP.git",
+                "reference": "24a4ee0ba5776f7a119824946ab7bdf9e4d02fd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jumbojett/OpenID-Connect-PHP/zipball/45aac47b525f0483dd4db3324bb1f1cab4666061",
-                "reference": "45aac47b525f0483dd4db3324bb1f1cab4666061",
+                "url": "https://api.github.com/repos/JuliusPC/OpenID-Connect-PHP/zipball/24a4ee0ba5776f7a119824946ab7bdf9e4d02fd0",
+                "reference": "24a4ee0ba5776f7a119824946ab7bdf9e4d02fd0",
                 "shasum": ""
             },
             "require": {
@@ -976,10 +976,21 @@
             "license": [
                 "Apache-2.0"
             ],
-            "description": "Bare-bones OpenID Connect client",
+            "description": "OpenID Connect client",
+            "keywords": [
+                "OpenID Connect",
+                "RFC7009",
+                "RFC7662",
+                "SSO",
+                "client",
+                "oauth 2",
+                "oidc",
+                "rfc6749",
+                "rfc7636"
+            ],
             "support": {
-                "issues": "https://github.com/jumbojett/OpenID-Connect-PHP/issues",
-                "source": "https://github.com/jumbojett/OpenID-Connect-PHP/tree/v0.9.10"
+                "issues": "https://github.com/JuliusPC/OpenID-Connect-PHP/issues",
+                "source": "https://github.com/JuliusPC/OpenID-Connect-PHP/tree/v1.1.1"
             },
             "time": "2022-09-30T12:34:46+00:00"
         },
