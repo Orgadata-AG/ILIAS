@@ -943,17 +943,17 @@
         },
         {
             "name": "juliuspc/openid-connect-php",
-            "version": "v1.1.1",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JuliusPC/OpenID-Connect-PHP.git",
-                "reference": "24a4ee0ba5776f7a119824946ab7bdf9e4d02fd0"
+                "reference": "6f8df75f014eea3aab529f6a30ea5ee3f21a4f84"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/JuliusPC/OpenID-Connect-PHP/zipball/24a4ee0ba5776f7a119824946ab7bdf9e4d02fd0",
-                "reference": "24a4ee0ba5776f7a119824946ab7bdf9e4d02fd0",
-                "shasum": ""
+                "reference": "6f8df75f014eea3aab529f6a30ea5ee3f21a4f84",
+                "shasum": "65f5de2711edb64ce1b92427c1b679d0ad53e5e1"
             },
             "require": {
                 "ext-curl": "*",
