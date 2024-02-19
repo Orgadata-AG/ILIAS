@@ -60,6 +60,7 @@ class ilAuthProviderOpenIdConnect extends ilAuthProvider
             try {
                 $oidc->signOut(
                     $id_token,
+                    ILIAS_HTTP_PATH . '/logout.php',
                     ILIAS_HTTP_PATH . '/' . ilStartUpGUI::logoutUrl()
                 );
             } catch (\Jumbojett\OpenIDConnectClientException $e) {
