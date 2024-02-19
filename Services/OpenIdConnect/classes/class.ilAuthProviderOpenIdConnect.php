@@ -18,7 +18,7 @@
 
 declare(strict_types=1);
 
-use JuliusPC\OpenIDConnectClient;
+use JuliusPC\OpenIDConnect;
 
 /**
  * Class ilAuthProviderOpenIdConnect
@@ -63,7 +63,7 @@ class ilAuthProviderOpenIdConnect extends ilAuthProvider
                     ILIAS_HTTP_PATH . '/logout.php',
                     ILIAS_HTTP_PATH . '/' . ilStartUpGUI::logoutUrl()
                 );
-            } catch (\Jumbojett\OpenIDConnectClientException $e) {
+            } catch (\JuliusPC\OpenIDConnect\Exceptions\ClientException $e) {
                 $this->logger->warning("Logging out of OIDC provider failed with: " . $e->getMessage());
             }
 
@@ -91,7 +91,9 @@ class ilAuthProviderOpenIdConnect extends ilAuthProvider
                 $oidc->getRedirectURL()
             );
 
-            $oidc->addScope($this->settings->getAllScopes());
+            foreach ($this->settings->getAllScopes() as $scope) {
+                $oidc->addScope($scope);
+            }
             if ($this->settings->getLoginPromptType() === ilOpenIdConnectSettings::LOGIN_ENFORCE) {
                 $oidc->addAuthParam(['prompt' => 'login']);
             }
@@ -172,9 +174,9 @@ class ilAuthProviderOpenIdConnect extends ilAuthProvider
         return $status;
     }
 
-    private function initClient(): OpenIDConnectClient
+    private function initClient(): \JuliusPC\OpenIDConnect\Client
     {
-        $oidc = new OpenIDConnectClient(
+        $oidc = new \JuliusPC\OpenIDConnect\Client(
             $this->settings->getProvider(),
             $this->settings->getClientId(),
             $this->settings->getSecret()
